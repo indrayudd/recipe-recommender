@@ -16,7 +16,7 @@ function App() {
     const recipeQuery = query || title;
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000/recommend?title=${recipeQuery}&n=10`);
+      const response = await fetch(`https://recipe-recommender-backend.onrender.com/recommend?title=${recipeQuery}&n=10`);
       const data = await response.json();
 
       if (response.ok) {
