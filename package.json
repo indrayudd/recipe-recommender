@@ -2,6 +2,8 @@
   "name": "hello-frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.20.6" },
   "dependencies": {
     "18": "^0.0.0",
     "cra-template": "1.2.0",
