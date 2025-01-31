@@ -32,7 +32,7 @@ function App() {
   // ----------------------------------------------------------------
   const fetchAutocomplete = useCallback(async (q) => {
     try {
-      const res = await fetch(`http://127.0.0.1:5000/autocomplete?title=${q}`);
+      const res = await fetch(`https://recipe-recommender-backend.onrender.com/autocomplete?title=${q}`);
       const data = await res.json();
       if (q === title.trim()) {
         suggestionsCache.current[q] = data || [];
@@ -112,7 +112,7 @@ function App() {
     setLoadingCoverRecs(true);
 
     // 1) METADATA
-    fetch(`http://127.0.0.1:5000/metadata?title=${suggestion}`)
+    fetch(`https://recipe-recommender-backend.onrender.com/metadata?title=${suggestion}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -128,7 +128,7 @@ function App() {
       .finally(() => setLoadingMetadata(false));
 
     // 2) COVER + RECS
-    fetch(`http://127.0.0.1:5000/cover_recs?title=${suggestion}`)
+    fetch(`https://recipe-recommender-backend.onrender.com/cover_recs?title=${suggestion}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
