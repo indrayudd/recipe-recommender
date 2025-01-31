@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;600&display=swap');
 
 body {
+  margin: 0;
+  padding: 0;
+  /* Force entire site to use Funnel Display */
   font-family: 'Funnel Display', sans-serif;
-  color: #333; /* Default text color */
+  color: #333;
 }
 
 /* Adjust the main container to use the full height */
@@ -185,3 +188,98 @@ body {
   font-size: 18px;
   margin-top: 20px;
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+/* Remove any hard-coded height/width from .skeleton */
+.skeleton {
+  background: linear-gradient(100deg, #e0e0e0 0%, #f0f0f0 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* No fixed height or width here */
+  /* height: 50px; */
+  /* width: 100%; */
+  border-radius: 10px;
+}
+
+/* Make sure the skeleton uses the same spacing/styling as the actual recommendation items */
+.recommendation-item.skeleton {
+  /* Inherit all the same properties as .recommendation-item */
+  padding: 15px;              /* match recommendation-item padding */
+  border-radius: 10px;        /* same rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: default;            /* skeletons aren't clickable */
+  color: transparent;         /* hide text if any, or you can remove text entirely in JS */
+  pointer-events: none;       /* disable hover/focus effects on skeletons */
+}
+
+/* For the left "closest match" skeleton, let's go teal instead */
+.skeleton-recipe {
+  background: linear-gradient(100deg, #1bc6bd 0%, #64e4db 50%, #1bc6bd 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Let .closest-match with .skeleton-recipe share the same padding, radius, etc. */
+.closest-match.skeleton-recipe {
+  background: none;
+  color: transparent;
+  pointer-events: none;
+  border-radius: 5px; 
+  box-shadow: none; 
+}
+
+
+/* Position the dropdown directly below the input, 
+   inside the .query-form which has position: relative
+*/
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: white; /* matches .closest-match background */
+  border: 1px solid #ccc;
+  z-index: 99; /* ensure on top of other elements */
+}
+
+.autocomplete-dropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 14px;
+  color: #333; /* Dark text so it’s visible on white */
+}
+
+.autocomplete-dropdown li:hover {
+  background-color: #f0f0f0;
+  color: #333; /* ensure text is still visible on hover */
+}
+
+.autocomplete-dropdown li {
+  text-transform: capitalize;
+  /* existing styles */
+}
+
+.closest-match p {
+  text-transform: capitalize;
+}
+
+/* Example highlight style */
+.autocomplete-dropdown li.highlighted {
+  background-color: #f0f0f0;
+}
+
+
