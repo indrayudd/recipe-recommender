@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;600&display=swap');
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.app-container {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -51,9 +60,10 @@ body {
 }
 
 .left-panel {
-  flex: 1; /* 1/3 of the width */
+  flex: 1; /* same width as before */
   background-color: #269591;
   color: white;
+  position: relative;
 }
 
 .right-panel {
@@ -283,3 +293,397 @@ body {
 }
 
 
+/* --- Remix Modal Styles --- */
+.remix-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.remix-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.chip {
+  padding: 8px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Funnel Display', sans-serif;
+}
+
+.chip.selected {
+  background-color: #269591;
+  color: white;
+}
+
+.chip.unselected {
+  background-color: #ddd;
+  color: #333;
+}
+
+.remix-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #269591;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', sans-serif;
+}
+
+/* Style for the new AI Remix Recipe button (smaller & with teal-inspired hover) */
+.remix-recipe-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 2px solid #269591;
+  color: #269591;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.remix-recipe-button:hover {
+  background-color: #1f7a8c;
+  color: white;
+}
+
+/* Style for the new Original Recipe button */
+.original-recipe-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 2px solid #269591;
+  color: #269591;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.original-recipe-button:hover {
+  background-color: #1f7a8c;
+  color: white;
+}
+/* --- Remix Modal Styles (existing) --- */
+/* ... existing modal styles remain ... */
+
+/* ---------- Spinner for Remix Button ---------- */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Updated Remix & Original Buttons ---------- */
+.remix-recipe-button,
+.original-recipe-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 2px solid #269591;
+  color: #269591;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.remix-recipe-button:hover,
+.original-recipe-button:hover {
+  background-color: #1f7a8c;
+  color: white;
+}
+
+
+/* Style for the Original Recipe button */
+.original-recipe-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 2px solid #269591;
+  color: #269591;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.original-recipe-button:hover {
+  background-color: #1f7a8c;
+  color: white;
+}
+/* ---------- Chip Styles for Ingredients ---------- */
+.chip {
+  padding: 8px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Funnel Display', sans-serif;
+  margin: 2px;
+}
+
+.chip.selected {
+  background-color: #269591;
+  color: white;
+}
+
+.chip.unselected {
+  background-color: #ddd;
+  color: #333;
+}
+/* Undeselectable chips appear in a desaturated bluish gray and are not clickable */
+.chip.undeselectable {
+  background-color: #a3bfcf;
+  color: #ffffff;
+  pointer-events: none;
+  opacity: 0.7;
+}
+/* ---------- Header & History Toggle Flap ---------- */
+.header-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center header text in available space */
+  padding-left: 40px; /* Space for the flap */
+}
+
+.panel-title {
+  margin: 0;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* History Toggle Flap (open) */
+.history-toggle-flap {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 5px 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-arrow {
+  color: #269591;
+  font-size: 20px;
+  display: inline-block;
+}
+
+/* ---------- Left Content ---------- */
+.left-content {
+  transition: opacity 0.5s ease-in-out;
+  margin-top: 20px; /* Push content lower to avoid overlap with header */
+}
+
+.left-content.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.left-content.fade-in {
+  opacity: 1;
+}
+
+/* ---------- History Panel ---------- */
+.history-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* same width as left panel */
+  height: 100%;
+  background-color: white;
+  overflow-y: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 10;
+  padding: 20px 0 50px 0;
+  box-shadow: 1px 0 5px -2px #44575a;
+}
+
+.history-panel.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.history-panel.slide-out {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+/* History Panel Header with close arrow */
+.history-header {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.close-history {
+  background-color: #269591;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.history-panel h3 {
+  margin: 0;
+  font-family: 'Funnel Display', sans-serif;
+  color: #269591;
+}
+
+@keyframes bounce-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+@keyframes bounce-left {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-3px); }
+}
+
+.history-toggle-flap:hover .toggle-arrow {
+  animation: bounce-right 0.3s ease;
+}
+
+.close-history:hover {
+  animation: bounce-left 0.3s ease;
+}
+
+/* ---------- History Items ---------- */
+.history-item {
+  background-color: #f0f0f0;
+  margin: 10px 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-family: 'Funnel Display', sans-serif;
+}
+
+.history-item:hover {
+  transform: translateX(5px);
+}
+
+.history-item .remix-emoji {
+  margin-right: 5px;
+}
+
+.macro-grid p {
+  margin: 0;
+}
+
+/* New AI Remix Button Styles */
+.ai-remix-button {
+  margin-top: 20px;
+  position: relative;
+  width: 80px;       /* Adjust size as needed */
+  height: 80px;      /* Square shape */
+  background-color: #fff;
+  border: 0px solid #269591;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;  /* Hide overflowing content during animation */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.ai-remix-button:hover {
+  background-color: #e8f7f7;
+  border-color: #e8f7f7;
+}
+
+/* The SVG icon is visible by default */
+.remix-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+/* The text is hidden off-canvas by default */
+.ai-remix-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-150%); /* starts off-screen to the left */
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;      /* center-align text */
+  white-space: normal;     /* allow wrapping */
+  max-width: 70px;         /* adjust as needed */
+  line-height: 1.2;
+  /* If you need two lines, you can use line-height adjustments */
+}
+
+/* On hover: move the SVG to the right and slide in the text */
+.ai-remix-button:hover .remix-icon {
+  transform: translateX(60px);
+}
+
+.ai-remix-button:hover .ai-remix-text {
+  transform: translateX(-50%);  /* now centered */
+  opacity: 1;
+}
