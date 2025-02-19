@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import useDebounce from "./useDebounce";
 import "./App.css";
+import ReactDOM from "react-dom/client";
 
 function App() {
   // ------------------ State Variables ------------------
@@ -545,3 +546,7 @@ function App() {
 }
 
 export default App;
+
+// Immediately render it:
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);

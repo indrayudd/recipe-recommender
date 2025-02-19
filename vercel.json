@@ -1,0 +1,20 @@
+{
+    "routes": [
+      {
+        "src": "/(.*)",
+        "has": [
+          {
+            "type": "header",
+            "key": "user-agent",
+            "value": ".*(Mobile|Android|iOS|iPhone|iPad|iPod).*"
+          }
+        ],
+        "dest": "/mobile/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/desktop/$1"
+      }
+    ]
+  }
+  

@@ -1,0 +1,485 @@
+/* 1) Import the Funnel Display font */
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;600&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Funnel Display', sans-serif;
+  background-color: #fff;
+}
+
+/* Container */
+.mobile-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+
+/* -- TOP HEADER -- */
+.mobile-top-header {
+  background-color: #4A9390;
+  width: 100%;
+  margin: 0;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mobile-title {
+  color: #fff;
+  margin: 0 0 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Search bar */
+.mobile-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 90%;
+  max-width: 400px;
+}
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+  color: #333;
+}
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.search-button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Main scrollable content */
+.mobile-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 100px;
+}
+
+/* Bottom nav pinned */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+  box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-evenly;
+  padding-left: 20px;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  user-select: none;
+}
+.nav-item img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+.nav-item span {
+  font-size: 12px;
+}
+
+/* AI button */
+.ai-button-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(270px, -30px);
+}
+.ai-remix-button {
+  width: 100px;
+  height: 100px;
+  background-color: #EBF7F7;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+.ai-remix-button img {
+  width: 34px;
+  height: 34px;
+}
+
+/* Autocomplete dropdown */
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+.autocomplete-dropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 14px;
+  color: #333;
+  text-transform: capitalize;
+}
+.autocomplete-dropdown li:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+.autocomplete-dropdown li.highlighted {
+  background-color: #f0f0f0;
+}
+
+/* ======================
+   RECIPE PAGE STYLES
+   ====================== */
+.recipe-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+/* Gray card with cover + title */
+.recipe-cover-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left align content */
+}
+.recipe-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  text-align: left; /* left aligned */
+  width: 100%;
+}
+.recipe-cover {
+  width: 100%;
+  /* Force 21:9 ratio */
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Steps list */
+.recipe-steps {
+  list-style-type: decimal;
+  margin: 0;
+  padding-left: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+.recipe-steps li {
+  margin-bottom: 8px;
+  line-height: 1.3;
+  font-size: 14px;
+}
+
+/* ======================
+   INFO PAGE STYLES
+   ====================== */
+.info-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+/* Gray card for cover + title in info page */
+.info-cover-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left align content */
+}
+.info-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  text-align: left;
+  width: 100%;
+}
+.info-cover {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Row for macros + prep time side by side */
+.info-stats-row {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: stretch; /* ensure same height */
+}
+
+/* macros on left, prep time on right */
+.macros-card {
+  flex: 1;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.macros-card h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.macros-list p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.prep-time-card {
+  flex: 1;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.prep-time-card h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* ingredients card below macros/time row */
+.ingredients-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+.ingredients-card h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.ingredients-card ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.ingredients-card ul li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* History item (grey card) */
+.history-item {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.history-item:hover {
+  background-color: #eee;
+}
+
+/* Recommendation heading & grid */
+.recommendation-heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 0 8px;
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+}
+.recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #EBF7F7;
+  padding: 10px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.recommendation-card {
+  background-color: #fff;
+  border-radius: 6px;
+  /* Force a rectangle with smaller height. 
+     aspect-ratio: width / height => 1 / 0.7 => ~1.43:1 => shorter
+  */
+  aspect-ratio: 1 / 0.7; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  cursor: pointer;
+  overflow: hidden;
+}
+.recommendation-card:hover {
+  background-color: #f0f0f0;
+}
+.recommendation-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ======================
+   Skeleton Shimmer
+   ====================== */
+
+/* We'll define a keyframes for the shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+/* Apply it to any skeleton class with a background gradient */
+.skeleton-recommendation,
+.skeleton-card,
+.skeleton-steps {
+  background: linear-gradient(
+    to right,
+    #dddddd 0%,
+    #eaeaea 20%,
+    #dddddd 40%,
+    #dddddd 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* The recommendation skeleton has same aspect ratio as .recommendation-card */
+.skeleton-recommendation {
+  border-radius: 6px;
+  aspect-ratio: 1 / 0.7;
+}
+
+/* A basic "card" skeleton with default height */
+.skeleton-card {
+  border-radius: 8px;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 16px;
+}
+
+/* A narrower "steps" skeleton */
+.skeleton-steps {
+  width: 100%;
+  max-width: 400px;
+  height: 80px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* ======================
+   Remix Chip Container
+   ====================== */
+
+/* Container holding all the ingredient chips */
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;  /* allows chips to wrap to the next line */
+  gap: 10px;        /* space between chips */
+  margin: 20px 0;
+}
+
+/* Default chip style */
+.chip {
+  padding: 8px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 14px;
+  margin: 2px;
+  background-color: #ddd; /* default background */
+  color: #333;            /* default text color */
+  transition: background-color 0.3s;
+}
+
+/* When a chip is selected (user wants to keep that ingredient) */
+.chip.selected {
+  background-color: #269591; /* teal or your brand color */
+  color: #fff;               /* white text */
+}
+
+/* When a chip is unselected (user wants to remove that ingredient) */
+.chip.unselected {
+  background-color: #ddd;
+  color: #333;
+}
+
+/* Undeselectable chips appear in a desaturated bluish gray, not clickable */
+.chip.undeselectable {
+  background-color: #a3bfcf;
+  color: #ffffff;
+  pointer-events: none;  /* no hover or click events */
+  opacity: 0.7;
+}
