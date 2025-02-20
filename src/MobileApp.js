@@ -394,7 +394,7 @@ export default function MobileApp() {
           />
         </div>
 
-        <p>Deselect which ingredients you have:</p>
+        <p>Deselect Missing Ingredients:</p>
         <div className="chip-container">
           {metadata.ingredients?.map((ing) => {
             const lowerIng = ing.toLowerCase();
