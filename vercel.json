@@ -1,24 +1,8 @@
 {
-    "rewrites": [
-        {
-            "source": "/debug",
-            "destination": "/api/debug"
-          },
-      {
-        "source": "/(.*)",
-        "has": [
-          {
-            "type": "header",
-            "key": "user-agent",
-            "value": "Android"
-          }
-        ],
-        "destination": "/mobile/$1"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/desktop/$1"
+    "functions": {
+      "api/*.js": {
+        "runtime": "nodejs18.x"
       }
-    ]
+    }
   }
   
