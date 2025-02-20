@@ -1,21 +1,20 @@
 {
     "rewrites": [
-        {
-            "source": "/debug",
-            "destination": "/api/debug"
-          },
       {
+        
         "source": "/(.*)",
         "has": [
           {
             "type": "header",
             "key": "user-agent",
-            "value": "Android"
+            "value": "(?i).*(android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini).*"
           }
         ],
-        "destination": "/mobile/$1"
+       
+        "destination": "/api/debug"
       },
       {
+        
         "source": "/(.*)",
         "destination": "/desktop/$1"
       }
