@@ -6,14 +6,14 @@
           {
             "type": "header",
             "key": "user-agent",
-            "value": ".*(Mobile|Android|iOS|iPhone|iPad|iPod).*"
+            "value": ".*(Mobile|Android|iPhone|iPad).*"
           }
         ],
-        "dest": "/mobile/$1"
+        "dest": "/build-mobile/$1"
       },
       {
         "src": "/(.*)",
-        "dest": "/desktop/$1"
+        "dest": "/build-desktop/$1"
       }
     ]
   }
