@@ -1,5 +1,9 @@
 {
     "rewrites": [
+        {
+            "source": "/debug",
+            "destination": "/api/debug"
+          },
       {
         "source": "/(.*)",
         "has": [
