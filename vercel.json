@@ -1,25 +1,16 @@
 {
-    "redirects": [
-    {
-      "source": "/vercel-test",
-      "destination": "https://www.google.com",
-      "permanent": false
-    }
-  ],
     "rewrites": [
-  
       {
         "source": "/(.*)",
         "has": [
           {
-            "type": "header",
-            "key": "user-agent",
-            "value": "(?i)(android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini)"
+            "type": "query",
+            "key": "mobileTest",
+            "value": "1"
           }
         ],
         "destination": "/mobile/$1"
       },
-   
       {
         "source": "/(.*)",
         "destination": "/desktop/$1"
