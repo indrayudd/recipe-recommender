@@ -4,9 +4,9 @@
         "source": "/(.*)",
         "has": [
           {
-            "type": "query",
-            "key": "mobileTest",
-            "value": "1"
+            "type": "header",
+            "key": "user-agent",
+            "value": "Android"
           }
         ],
         "destination": "/mobile/$1"
