@@ -1,4 +1,11 @@
 {
+    "redirects": [
+    {
+      "source": "/vercel-test",
+      "destination": "https://www.google.com",
+      "permanent": false
+    }
+  ],
     "rewrites": [
   
       {
