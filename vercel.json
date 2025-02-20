@@ -1,19 +1,21 @@
 {
-    "routes": [
+    "rewrites": [
+  
       {
-        "src": "/(.*)",
+        "source": "/(.*)",
         "has": [
           {
             "type": "header",
             "key": "user-agent",
-            "value": ".*(Mobile|Android|iPhone|iPad).*"
+            "value": "(?i)(android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini)"
           }
         ],
-        "dest": "/build-mobile/$1"
+        "destination": "/mobile/$1"
       },
+   
       {
-        "src": "/(.*)",
-        "dest": "/build-desktop/$1"
+        "source": "/(.*)",
+        "destination": "/desktop/$1"
       }
     ]
   }
